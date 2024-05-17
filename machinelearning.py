@@ -12,6 +12,22 @@ The purpose of this notebook is to demonstrate knowledge and competency of machi
 import pandas as pd
 import numpy as np
 
+"""One of the first things to do when you get a file is to prep the data for analysis.  For instance, we are looking for bad data, nulls, etc."""
+
 diabetes = pd.read_csv('diabetes.csv')
 print(diabetes.head())
 
+"""The code below is some exploratory analysis to see what we need to do to prep the data correctly."""
+
+len(diabetes) # 768 (this is the length of our file)
+diabetes.dtypes # This is important for us to see the different data types of the variables
+
+"""Are there nulls?"""
+
+diabetes.isnull().sum() # No nulls
+
+"""In the event that there were nulls, which there are not, we could run some code like what is below.  It will be commented out for the sake of this project."""
+
+#diabetes_clean = diabetes.dropna()
+#len(diabetes_clean)
+#diabetes_clean.isnull().sum # Rerunning to check for nulls
