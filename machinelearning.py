@@ -21,6 +21,7 @@ print(diabetes.head())
 
 len(diabetes) # 768 (this is the length of our file)
 diabetes.dtypes # This is important for us to see the different data types of the variables
+diabetes.describe() # This gives us a summary of the data
 
 """Are there nulls?"""
 
@@ -31,3 +32,16 @@ diabetes.isnull().sum() # No nulls
 #diabetes_clean = diabetes.dropna()
 #len(diabetes_clean)
 #diabetes_clean.isnull().sum # Rerunning to check for nulls
+
+"""Now that we have looked at the data and took necessary measures to make sure it is clean, we can move forward.  The next step is splitting the data into a training and test step.  However, we need to identify the target / label attribute that we want to work with."""
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, OneHotEncoder
+
+# One-hot encoding for the 'category' feature
+encoder = OneHotEncoder(sparse = False)
+encoded_categories = encoder.fit_transform(diabetes[['category']])
+encoded_diabetes = pd.DataFrame(encoded_categories, columns = encoder.get_feature_names_out(['category']))
+
+# Concatenate the encoded categories back to the original DataFrame
+df = pd.concat([diabetes.drop('category', axis=1), encoded_diabetes], axis=1)
