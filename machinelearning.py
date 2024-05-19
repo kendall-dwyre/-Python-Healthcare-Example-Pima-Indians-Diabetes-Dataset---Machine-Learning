@@ -39,9 +39,96 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, OneHotEncoder
 
 # One-hot encoding for the 'category' feature
-encoder = OneHotEncoder(sparse = False)
-encoded_categories = encoder.fit_transform(diabetes[['category']])
-encoded_diabetes = pd.DataFrame(encoded_categories, columns = encoder.get_feature_names_out(['category']))
+#encoder = OneHotEncoder(sparse = False)
+#encoded_categories = encoder.fit_transform(diabetes[['category']])
+#encoded_diabetes = pd.DataFrame(encoded_categories, columns = encoder.get_feature_names_out(['category']))
 
 # Concatenate the encoded categories back to the original DataFrame
-df = pd.concat([diabetes.drop('category', axis=1), encoded_diabetes], axis=1)
+#df = pd.concat([diabetes.drop('category', axis=1), encoded_diabetes], axis=1)
+
+"""Next, it's important for us to identify what it is that we want to "target", and if there are any variables that provide unessary / irrelevant information that can be dropped entirely.
+
+"Outcome" seems to be a good variable to use as a target.  This variable is predicting whether people have diabetes based on the other factors.  The goal of our machine learning is to look at the connection between these variables and the target value.  
+"""
+
+# Dropping our target variable
+X = diabetes.drop(columns=['Outcome'])
+y = diabetes['Outcome']
+
+# Splitting the data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
+
+# We can look at some of the values
+#print(X_train)
+print(X_train.describe()) # Descriptive statistics
+#print(y_train)
+#print(X_test)
+#print(y_test)
+
+"""Let's look at some visualizations."""
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.pairplot(diabetes, hue = 'Outcome')
+plt.show()
+
+"""Logistic Regression."""
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+# Create a logistic regression model
+model = LogisticRegression()
+
+# Train the model on the training data
+model.fit(X_train, y_train)
+
+# Make predictions on the test data
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+"""Decision Tree."""
+
+from sklearn.tree import DecisionTreeClassifier
+
+dt_model = DecisionTreeClassifier()
+dt_model.fit(X_train, y_train)
+
+# Prediction
+y_pred_train = dt_model.predict(X_train)
+y_pred_test = dt_model.predict(X_test)
+
+# Accuracy
+accuracy_test = accuracy_score(y_test, y_pred)
+accuracy_train = accuracy_score(y_train, y_pred_train)
+print("Test Accuracy:", accuracy_test)
+print("Train Accuracy:", accuracy_train)
+
+"""Random Forest."""
+
+from sklearn.ensemble import RandomForestClassifier
+
+rf_model = RandomForestClassifier()
+rf_model.fit(X_train, y_train)
+
+# Predictions
+y_pred_train = rf_model.predict(X_train)
+y_pred_test = rf_model.predict(X_test)
+
+# Accuracy
+accuracy_test = accuracy_score(y_test, y_pred)
+accuracy_train = accuracy_score(y_train, y_pred_train)
+print("Test Accuracy:", accuracy_test)
+print("Train Accuracy:", accuracy_train)
+
+"""Hyperparameters."""
+
+from sklearn.model_selection import GridSearchCV
+
+param_grid = {
+
+grid_search = GridSearchCV(rf_model, param_
