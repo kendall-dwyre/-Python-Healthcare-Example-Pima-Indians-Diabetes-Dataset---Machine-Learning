@@ -123,6 +123,35 @@ accuracy_train = accuracy_score(y_train, y_pred_train)
 print("Test Accuracy:", accuracy_test)
 print("Train Accuracy:", accuracy_train)
 
+"""These are helpful parameters as we look at the different evaluators:
+
+1. Accuracy
+
+Good is greater than 90%, acceptable 70% - 90%, and poor is less than 70%.
+
+2. Precision
+
+What is actually correct.
+
+Good is greater than 90%, acceptable 70% - 90%, and poor is less than 70%.
+
+3. Recall (Sensitivity)
+
+Proportion of actual positives that are correctly identified.
+
+Good is greater than 90%, acceptable is 70% - 90%, and poor 70%.
+
+4. F1 Score
+
+Harmonic mean of precision and recall and provides a balance between the two.  
+
+Good is greater than 90%, acceptable 70% - 90%, and poor is less than 70%.
+
+
+
+
+"""
+
 models = {
     'Logistic Regression': LogisticRegression(max_iter=10000),
     'Decision Tree': DecisionTreeClassifier(),
@@ -151,3 +180,5 @@ for model_name, model in models.items():
 # Display the results
 results_df = pd.DataFrame(results).T
 print(results_df)
+
+"""The model that is chosen will be the Decision Tree.  It seems to have the best values across the different categories."""
