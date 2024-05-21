@@ -11,15 +11,25 @@ Explanation about the dataset from Kaggle:
 The objective of this repository is to demonstrate some machine learning skills; however, I will be going through a typical work flow that a data scientist would go through when working with new data.  The steps are as follows:
 
 1.) Define the Problem
+
 2.) Collect Data
+
 3.) Data Cleaning
+
 4.) Explortory Analysis
+
 5.) Feature Engineering 
+
 6.) Model Selection
+
 7.) Model Training
+
 8.) Model Evaluation
+
 9.) Model Deployment
+
 10.) Monitor and Maintenance
+
 11.) Communication and Reporting
 
 Given that I gathered this data from Kaggle, steps 1.) and 2.) will be skipped.  If we were starting scratch, we would begin by asking a question and gathering appropriate data.  
