@@ -94,6 +94,5 @@ The dataset used in this project is from the UCI Machine Learning Repository and
 
 For any questions or suggestions, feel free to contact me:
 - **Name**: Kendall Dwyre
-- **Email**: ksdwyre@gmail.com
 - **LinkedIn**: [Kendall Dwyre LinkedIn](https://www.linkedin.com/in/kendall-dwyre/)
 - **GitHub**: [Kendall Dwyre GitHub](https://github.com/kendall-dwyre/)
