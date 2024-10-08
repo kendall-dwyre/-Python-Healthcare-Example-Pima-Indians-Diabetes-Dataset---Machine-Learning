@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates machine learning techniques applied to the **Pima Indians Diabetes Dataset**. The goal is to predict whether a person has diabetes based on specific diagnostic measurements. Various machine learning models were used and compared to determine which performs best for this classification task. The dataset was obtained from [Kaggle](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database).
+This project demonstrates machine learning techniques applied to the **Pima Indians Diabetes Dataset**. The goal is to predict whether a person has diabetes based on specific diagnostic measurements. Various machine learning models were trained, evaluated, and compared to determine which performed best in predicting diabetes. The dataset was obtained from [Kaggle](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database).
 
 ## Dataset Description
 
@@ -49,17 +49,36 @@ The Pima Indians Diabetes Dataset consists of 768 observations of female patient
 ### 4. **Confusion Matrix:**
 - A confusion matrix was used for each model to visualize the true positives, true negatives, false positives, and false negatives. This helps understand model behavior beyond simple accuracy.
 
-## Insights
+## Diabetes Insights Based on the Data and Models
 
-From this project, several insights were drawn:
-- **Decision Tree Model:** This model showed good performance across different metrics and was relatively simple to interpret. However, tuning hyperparameters like tree depth could further improve its performance.
-- **Random Forest and Gradient Boosting Models:** These ensemble models performed well and showed promise for real-world applications. They handle overfitting better than single decision trees and provide feature importance, which can help in identifying the most impactful factors for diabetes prediction.
-- **Feature Importance:** Features like **Glucose** and **BMI** were found to be the most influential in predicting diabetes, aligning with medical knowledge about diabetes risk factors.
-- **Cross-Validation:** Using cross-validation gave us a more reliable estimate of model performance. The Decision Tree model had an average cross-validation accuracy of ~75%, making it the best fit for this problem in this instance.
+From the analysis performed using the Pima Indians Diabetes Dataset, several key insights about diabetes and its risk factors were observed. The models gave us a better understanding of which features play a crucial role in predicting the likelihood of diabetes.
+
+### 1. **Glucose Levels Are the Most Important Predictor**
+- **Glucose** was consistently shown to be the most significant feature across all the models, including Decision Trees and Random Forests, which provide feature importance metrics.
+- This aligns with medical knowledge that higher glucose levels are a critical indicator of diabetes. Patients with elevated glucose levels, particularly those above the normal range during an oral glucose tolerance test, are more likely to have diabetes.
+
+### 2. **BMI and Age as Contributing Factors**
+- **BMI (Body Mass Index)** was another key predictor identified by the models. Higher BMI values were associated with an increased likelihood of diabetes, reinforcing the well-documented relationship between obesity and diabetes risk.
+- **Age** also plays a role in diabetes prediction. Older individuals, particularly those above 50, were found to be more at risk. This is consistent with the fact that diabetes, especially Type 2, tends to manifest later in life.
+
+### 3. **The Role of Pregnancies and Insulin**
+- The number of **pregnancies** also contributed to the prediction of diabetes, particularly among women who had multiple pregnancies. This insight could relate to conditions like gestational diabetes, where temporary diabetes during pregnancy could later lead to permanent Type 2 diabetes.
+- The **insulin** feature was less impactful in the models, possibly due to missing or inconsistent values in the dataset. This might suggest that insulin levels alone are not sufficient to predict diabetes unless combined with other factors.
+
+### 4. **Blood Pressure and Skin Thickness Have Limited Impact**
+- Features like **Blood Pressure** and **Skin Thickness** showed a relatively lower contribution to diabetes prediction compared to glucose, BMI, and age. While high blood pressure is often associated with diabetes, it seems that glucose levels and BMI were far more important in identifying patients with diabetes in this particular dataset.
+
+### 5. **Models' Performance in Predicting Diabetes**
+- The **Decision Tree** and **Random Forest** models performed the best in terms of accuracy, precision, recall, and F1 score, with Decision Tree having the best cross-validation score (~75% accuracy).
+- **Logistic Regression** provided an interpretable model but didn’t perform as well as tree-based models. Its simplicity may make it useful in some cases but lacks the ability to capture complex patterns in the data compared to ensemble models like Random Forest and Gradient Boosting.
+- **Gradient Boosting** also showed promise, with strong precision and recall values, making it a robust model for diabetes prediction in this context.
+
+### Key Takeaway:
+The most impactful factors for predicting diabetes are **Glucose levels, BMI, and Age**. These features, when combined, provide a reliable indication of diabetes risk, helping models like Decision Trees and Random Forests achieve good accuracy. Insights from this analysis suggest that glucose monitoring and maintaining a healthy BMI are critical in diabetes prevention.
 
 ## Conclusion
 
-This project demonstrates the application of several machine learning algorithms to a real-world healthcare dataset. By comparing models and analyzing evaluation metrics, we gained a better understanding of the factors that influence diabetes diagnosis. 
+This project demonstrates the application of several machine learning algorithms to a real-world healthcare dataset. By comparing models and analyzing evaluation metrics, we gained a better understanding of the factors that influence diabetes diagnosis. The insights provided by this project can help medical professionals focus on the most critical health metrics when assessing diabetes risk.
 
 Further improvements to the project could include:
 - **Hyperparameter tuning** to optimize model performance.
@@ -94,5 +113,6 @@ The dataset used in this project is from the UCI Machine Learning Repository and
 
 For any questions or suggestions, feel free to contact me:
 - **Name**: Kendall Dwyre
+- **Email**: ksdwyre@gmail.com
 - **LinkedIn**: [Kendall Dwyre LinkedIn](https://www.linkedin.com/in/kendall-dwyre/)
 - **GitHub**: [Kendall Dwyre GitHub](https://github.com/kendall-dwyre/)
